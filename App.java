@@ -1,4 +1,4 @@
-import numbers.Number;
+import numbers.support.Number;
 
 import java.util.Scanner;
 

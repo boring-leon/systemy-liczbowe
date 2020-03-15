@@ -1,4 +1,4 @@
-package numbers;
+package numbers.support;
 
 public class Number {
     public static NumberResult decimal(int n) {

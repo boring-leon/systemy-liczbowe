@@ -1,4 +1,9 @@
-package numbers;
+package numbers.support;
+
+import numbers.BinaryNumber;
+import numbers.DecimalNumber;
+import numbers.HexNumber;
+import numbers.OctNumber;
 
 public class NumberResult {
 
