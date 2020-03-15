@@ -20,6 +20,11 @@ public class NumberResult {
         return new NumberResult(binary);
     }
 
+    public static NumberResult fromOct(String oct){
+        String binary = OctNumber.toBinary(oct);
+        return new NumberResult(binary);
+    }
+
     public String toBinary() {
         return this.binary;
     }
@@ -30,6 +35,10 @@ public class NumberResult {
 
     public String toHex() {
         return new HexNumber(this.binary).toString();
+    }
+
+    public String toOct() {
+        return new OctNumber(this.binary).toString();
     }
 
     public boolean equalsToDecimal(int decimal) {

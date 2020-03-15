@@ -5,11 +5,15 @@ public class Number {
         return new NumberResult(n);
     }
 
-    public static NumberResult binary(String s) {
-        return new NumberResult(s);
+    public static NumberResult binary(String binary) {
+        return new NumberResult(binary);
     }
 
-    public static NumberResult hex(String s) {
-        return NumberResult.fromHex(s);
+    public static NumberResult hex(String hex) {
+        return NumberResult.fromHex(hex);
+    }
+
+    public static NumberResult oct(String oct) {
+        return NumberResult.fromOct(oct);
     }
 }

@@ -13,7 +13,8 @@ public class App {
             int input = new Scanner(System.in).nextInt();
             System.out.print(
                             "Bin: " + Number.decimal(input).toBinary() + "\n" +
-                            "Hex: " + Number.decimal(input).toHex()
+                            "Hex: " + Number.decimal(input).toHex() + "\n" +
+                            "Oct: " + Number.decimal(input).toOct()
             );
             System.out.println("\n");
         }
