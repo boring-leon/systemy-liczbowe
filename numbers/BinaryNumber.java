@@ -41,8 +41,9 @@ public class BinaryNumber implements Convertable {
 
     @Override
     public String toString() {
-        return this.getNumberStringBuilder().toString();
+        return this.decimalNumber == 0 ? "0" : this.getNumberStringBuilder().toString();
     }
+
 
 
 }
