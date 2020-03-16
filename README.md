@@ -24,20 +24,16 @@ Analizuję  wagi od największej w dół - jeżeli w zapisie binarnym danej wadz
 
 1. Jeśli ilość znaków nie jest podzielna przez 4, dopisuję odpowiednią ilość zer na początku łańcucha.
 ```java
-private int getNewBinaryStringLength() {
    int binaryStringLength = binaryString.length();
-    return binaryStringLength % 4 == 0 ? binaryStringLength : (int) (4 * Math.ceil((double) binaryStringLength / 4));
-}
+   return binaryStringLength % 4 == 0 ? binaryStringLength : (int) (4 * Math.ceil((double) binaryStringLength / 4));
 
-private StringBuilder getNewBinaryStringBuilder() {
-    StringBuilder builder = new StringBuilder(this.binaryString);
+   StringBuilder builder = new StringBuilder(this.binaryString);
 
     for (int i = 0; i < this.getNewBinaryStringLength() - binaryString.length(); i++) {
         builder.insert(i, "0");
     }
 
     return builder;
-}
 ```
 Rozbijam łańcuch z liczbą w postaci binarnej na sekwencje po 4 znaki
 Liczbom w sekwencji odpowiadają kolejne potęgi dwójki (1, 2, 4, 8).
