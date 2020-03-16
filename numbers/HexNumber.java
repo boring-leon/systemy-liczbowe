@@ -1,78 +1,15 @@
 package numbers;
 
-public class HexNumber implements Convertable {
-    private String binaryString;
-    private int[] weights;
+public class HexNumber extends BinarySplitter implements Convertable {
 
     public HexNumber(String binaryString) {
-        this.binaryString = binaryString;
+        super(binaryString);
+        this.splitBy = 4;
     }
 
-
-    private int[] getGroupedWeightsSum() {
-        int[] sumArray = new int[this.weights.length / 4];
-        for (int i = 0; i < this.weights.length; i += 4) {
-            int sum = 0, index = 0;
-            for (int j = 0; j < 4; j++) {
-                index = i + j;
-                if (index >= this.weights.length) index = this.weights.length - 1;
-                sum += this.weights[index];
-            }
-            if (sum > 0) sumArray[i / 4] = sum;
-        }
-
-        return sumArray;
-    }
-
-    private int[] getWeightsArray(StringBuilder binaryStringBuilder) {
-        int binaryStringLength = binaryStringBuilder.length();
-        int weights[] = new int[binaryStringLength];
-
-        for (int i = 0; i < binaryStringLength; i += 4) {
-            for (int j = 0; j < 4; j++) {
-                int index = i + j;
-                if (index >= binaryStringLength) {
-                    index = binaryStringLength - 1;
-                }
-
-                if (binaryStringBuilder.charAt(index) == '0') {
-                    weights[index] = 0;
-                } else {
-                    int wykladnik = -1 * j + 3;
-                    int waga = (int) Math.pow(2, wykladnik);
-                    weights[index] = waga;
-                }
-            }
-        }
-
-        return weights;
-    }
-
-    private int getNewBinaryStringLength() {
-        int binaryStringLength = binaryString.length();
-        return binaryStringLength % 4 == 0 ? binaryStringLength : (int) (4 * Math.ceil((double) binaryStringLength / 4));
-
-    }
-
-    private StringBuilder getNewBinaryStringBuilder() {
-        StringBuilder builder = new StringBuilder(this.binaryString);
-
-        for (int i = 0; i < this.getNewBinaryStringLength() - binaryString.length(); i++) {
-            builder.insert(i, "0");
-        }
-
-        return builder;
-    }
-
-    @Override
-    public String toString() {
-        this.weights = this.getWeightsArray(this.getNewBinaryStringBuilder());
-        return this.getResult().toString();
-    }
-
-    private StringBuilder getResult() {
+    public StringBuilder getResult() {
         StringBuilder result = new StringBuilder();
-        int[] sums = this.getGroupedWeightsSum();
+        int[] sums = this.getWeightsSumsArray();
 
         for (int i = 0; i < sums.length; i++) {
             result.append(getCharNumberEquivalent(sums[i]));
