@@ -48,3 +48,23 @@ Zostawiam liczby od 0 do 9, od 10 do 15 zamieniam na kolejne litery alfabetu (A,
 1. Zamieniam każdy znak w pętli na liczbę dziesiętną. 
 2. Zamieniam liczby dziesiętne na dwójkowe.
 3. Zwracam "sklejony" wynik.
+
+# oct -> bin
+1. Każdy znak w łańuchu zapisu liczby ósemkowej zamieniam na liczbę binarną
+2. Jeżeli konwersja wytworzyła liczbę binarną którtszą niż 4-zankowa, to dopisuję na początku oddpowiednią ilość zer
+
+```java
+ public static String toBinary(String oct) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < oct.length(); i++) {
+            int decimal = Integer.parseInt(Character.toString(oct.charAt(i)));
+            StringBuilder binary = new StringBuilder(new BinaryNumber(decimal).toString());
+            for (int j = 0; j < 4 - binary.length(); j++) {
+                binary.insert(j, "0");
+            }
+            result.append(binary.toString());
+        }
+
+        return result.toString();
+    }
+```
